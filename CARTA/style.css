@@ -43,6 +43,9 @@
 
 html {
   scroll-behavior: smooth;
+  overflow-x: hidden;
+  width: 100%;
+  -webkit-text-size-adjust: 100%;
 }
 
 body {
@@ -53,6 +56,8 @@ body {
   overflow-x: hidden;
   position: relative;
   line-height: 1.6;
+  width: 100%;
+  -webkit-font-smoothing: antialiased;
 }
 
 /* ==========================================================================
@@ -120,6 +125,18 @@ body {
   font-weight: 600;
   font-size: 1.1rem;
   letter-spacing: 0.5px;
+}
+
+.nav-logo {
+  height: 34px;
+  width: auto;
+  border-radius: 18px;
+  vertical-align: middle;
+  margin-left: 6px;
+  border: 1.5px solid rgba(255, 117, 151, 0.6);
+  box-shadow: 0 0 10px rgba(255, 64, 129, 0.4);
+  object-fit: cover;
+  transition: var(--transition-smooth);
 }
 
 .nav-brand .heart-icon {
@@ -270,6 +287,61 @@ body {
 .banner-btn:hover {
   transform: scale(1.06);
   box-shadow: 0 6px 20px rgba(255, 64, 129, 0.8);
+}
+
+/* Botones de Barra de Navegación */
+.nav-btn {
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  color: #fff;
+  border-radius: 20px;
+  padding: 6px 14px;
+  font-family: var(--font-main);
+  font-size: 0.85rem;
+  font-weight: 500;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  transition: var(--transition-smooth);
+}
+
+.nav-btn:hover {
+  background: rgba(255, 255, 255, 0.16);
+  border-color: var(--primary-rose);
+  transform: translateY(-1px);
+}
+
+.config-btn {
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  color: #fff;
+}
+
+.config-btn:hover {
+  background: rgba(255, 209, 102, 0.15);
+  border-color: var(--gold-accent);
+  box-shadow: 0 0 12px rgba(255, 209, 102, 0.3);
+}
+
+.music-btn {
+  background: rgba(255, 64, 129, 0.2);
+  border: 1px solid rgba(255, 117, 151, 0.4);
+  padding: 4px 10px;
+  border-radius: 16px;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.music-btn:hover {
+  background: rgba(255, 64, 129, 0.35);
+  box-shadow: 0 0 12px rgba(255, 64, 129, 0.5);
+}
+
+.music-icon {
+  font-size: 0.75rem;
+  color: #fff;
 }
 
 .sound-wave {
@@ -809,14 +881,6 @@ body {
   filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.4));
 }
 
-@media (max-width: 620px) {
-  .envelope-flap {
-    border-left-width: calc(50vw - 20px);
-    border-right-width: calc(50vw - 20px);
-    border-top-width: 150px;
-  }
-}
-
 /* Bolsillo Frontal */
 .envelope-pocket {
   position: absolute;
@@ -830,15 +894,6 @@ body {
   border-top: 180px solid transparent;
   border-radius: 0 0 12px 12px;
   z-index: 4;
-}
-
-@media (max-width: 620px) {
-  .envelope-pocket {
-    border-left-width: calc(50vw - 20px);
-    border-right-width: calc(50vw - 20px);
-    border-bottom-width: 150px;
-    border-top-width: 150px;
-  }
 }
 
 /* Sello de Cera 3D */
@@ -1100,33 +1155,6 @@ body {
   }
 }
 
-@media (max-width: 620px) {
-  .envelope-scene.is-open {
-    min-height: 850px;
-  }
-
-  .envelope-container.open .letter-paper {
-    padding: 28px 20px 22px;
-    width: 96%;
-    outline-offset: -6px;
-  }
-
-  .letter-greeting {
-    font-size: 1.05rem;
-    margin-bottom: 16px;
-  }
-
-  .letter-body-paragraphs p {
-    font-size: 0.94rem;
-    line-height: 1.72;
-    margin-bottom: 12px;
-  }
-
-  .sig-author {
-    font-size: 1.18rem;
-  }
-}
-
 .envelope-hint {
   text-align: center;
   margin-top: 15px;
@@ -1364,29 +1392,6 @@ body {
   font-size: 0.95rem;
   color: var(--text-muted);
   line-height: 1.5;
-}
-
-@media (max-width: 768px) {
-  .timeline-line {
-    left: 20px;
-  }
-
-  .timeline-card {
-    width: 100%;
-    padding-left: 55px;
-    padding-right: 15px;
-  }
-
-  .timeline-card.left-card,
-  .timeline-card.right-card {
-    left: 0;
-    text-align: left;
-  }
-
-  .left-card .timeline-node,
-  .right-card .timeline-node {
-    left: 2px;
-  }
 }
 
 /* ==========================================================================
@@ -2431,5 +2436,847 @@ body {
   100% {
     opacity: 0;
     transform: translateY(calc(100vh + 180px)) rotate(calc(var(--rot) + 15deg)) scale(0.9);
+  }
+}
+
+/* ==========================================================================
+   SISTEMA DE DISEÑO RESPONSIVO MÓVIL PROFESIONAL Y ELEGANTE
+   ========================================================================== */
+
+@media (max-width: 768px) {
+  /* Contenedor principal: espaciado limpio y seguro */
+  .main-container {
+    padding: 82px 14px 40px;
+    max-width: 100%;
+  }
+
+  .section {
+    margin-bottom: 60px;
+  }
+
+  .section-header {
+    margin-bottom: 24px;
+    padding: 0 8px;
+  }
+
+  .section-title {
+    font-size: clamp(1.65rem, 5.8vw, 2.1rem);
+    line-height: 1.25;
+  }
+
+  .section-desc {
+    font-size: 0.92rem;
+    padding: 0 6px;
+    line-height: 1.5;
+  }
+
+  /* BARRA FLOTANTE ULTRA ELEGANTE: 1 SOLA FILA, ULTRA COMPACTA */
+  .floating-nav {
+    top: 10px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: calc(100% - 20px);
+    max-width: 520px;
+    height: 52px;
+    padding: 6px 12px;
+    border-radius: 30px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    gap: 8px;
+    background: rgba(18, 12, 34, 0.88);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border: 1px solid rgba(255, 117, 151, 0.35);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.65), 0 0 16px rgba(255, 64, 129, 0.25);
+    z-index: 999;
+  }
+
+  /* Marca izquierda: compacta */
+  .nav-brand {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    flex-shrink: 0;
+  }
+
+  .nav-brand .nav-title {
+    display: none; /* Oculto en móvil para dar protagonismo total al reproductor centrado */
+  }
+
+  .nav-brand .heart-icon {
+    font-size: 1.15rem;
+  }
+
+  .nav-logo {
+    height: 28px;
+    width: auto;
+    border-radius: 14px;
+    margin-left: 2px;
+  }
+
+  .nav-actions {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 6px;
+    flex: 1;
+    min-width: 0;
+  }
+
+  /* REPRODUCTOR DE MÚSICA 100% CENTRADO */
+  .music-player-pill {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto;
+    padding: 4px 10px 4px 6px;
+    gap: 7px;
+    background: rgba(0, 0, 0, 0.6);
+    border: 1px solid rgba(255, 117, 151, 0.45);
+    border-radius: 20px;
+    flex: 1;
+    max-width: 230px;
+    min-width: 0;
+    box-shadow: inset 0 0 8px rgba(0, 0, 0, 0.6);
+  }
+
+  .vinyl-disc {
+    width: 28px;
+    height: 28px;
+    flex-shrink: 0;
+    box-shadow: 0 0 8px rgba(255, 209, 102, 0.35);
+  }
+
+  .disc-icon {
+    font-size: 0.9rem;
+  }
+
+  .track-info {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    line-height: 1.15;
+    flex: 1;
+    min-width: 0;
+    overflow: hidden;
+  }
+
+  .track-title {
+    font-size: 0.74rem;
+    font-weight: 600;
+    width: 100%;
+    max-width: 130px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    color: #ffffff;
+    text-align: center;
+  }
+
+  .track-artist {
+    font-size: 0.62rem;
+    color: var(--primary-rose);
+    width: 100%;
+    max-width: 130px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    text-align: center;
+  }
+
+  .nav-btn.music-btn {
+    padding: 4px 8px;
+    border-radius: 14px;
+    flex-shrink: 0;
+    background: rgba(255, 64, 129, 0.3);
+    border: 1px solid rgba(255, 117, 151, 0.5);
+  }
+
+  .music-icon {
+    font-size: 0.7rem;
+  }
+
+  .sound-wave {
+    height: 11px;
+    gap: 1.5px;
+  }
+
+  .sound-wave i {
+    width: 2px;
+  }
+
+  /* BOTÓN DE CONFIGURACIÓN */
+  .config-btn {
+    padding: 6px;
+    border-radius: 50%;
+    width: 32px;
+    height: 32px;
+    min-width: 32px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    background: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+  }
+
+  .config-btn .config-label {
+    display: none;
+  }
+
+  /* VENTANA / AVISO FLOTANTE DE MÚSICA EN PARTE INFERIOR (COMPACTO Y CERRABLE) */
+  .music-start-banner {
+    position: fixed;
+    bottom: 14px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: calc(100% - 24px);
+    max-width: 380px;
+    background: linear-gradient(135deg, rgba(26, 14, 46, 0.96), rgba(42, 13, 48, 0.96));
+    border: 1.5px solid var(--gold-accent);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border-radius: 24px;
+    padding: 10px 14px;
+    z-index: 990;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.85), 0 0 20px rgba(255, 209, 102, 0.35);
+    animation: none !important;
+    transition: opacity 0.4s ease, transform 0.4s ease;
+  }
+
+  .music-start-banner.hidden-banner {
+    opacity: 0;
+    pointer-events: none;
+    transform: translateX(-50%) translateY(35px);
+  }
+
+  .banner-content {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 8px;
+    width: 100%;
+  }
+
+  .banner-icon {
+    font-size: 1.35rem;
+    flex-shrink: 0;
+  }
+
+  .banner-text {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    text-align: left;
+    min-width: 0;
+    overflow: hidden;
+  }
+
+  .banner-text strong {
+    font-size: 0.82rem;
+    color: #fff;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  .banner-text span {
+    font-size: 0.7rem;
+    color: var(--gold-accent);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  .banner-btn {
+    padding: 7px 12px;
+    font-size: 0.78rem;
+    font-weight: 700;
+    border-radius: 16px;
+    flex-shrink: 0;
+    white-space: nowrap;
+  }
+
+  .banner-close-btn {
+    background: transparent;
+    border: none;
+    color: var(--text-muted);
+    font-size: 1.25rem;
+    line-height: 1;
+    cursor: pointer;
+    padding: 2px 4px;
+    flex-shrink: 0;
+  }
+
+  /* SECCIÓN HERO */
+  .hero-section {
+    min-height: auto;
+    padding: 15px 4px 25px;
+  }
+
+  .hero-badge {
+    font-size: 0.82rem;
+    padding: 5px 14px;
+    margin-bottom: 14px;
+    gap: 6px;
+  }
+
+  .hero-title {
+    font-size: clamp(1.75rem, 6.5vw, 2.5rem);
+    line-height: 1.22;
+    margin-bottom: 16px;
+  }
+
+  .hero-quote-card {
+    padding: 18px 14px;
+    border-radius: 18px;
+    margin: 0 auto 24px;
+    text-align: left;
+  }
+
+  .hero-quote {
+    font-size: 0.94rem;
+    line-height: 1.68;
+  }
+
+  .quote-mark {
+    font-size: 1.5rem;
+  }
+
+  .cake-experience-wrapper {
+    padding: 18px 12px;
+    border-radius: 20px;
+    margin: 0 auto 24px;
+    width: 100%;
+    max-width: 100%;
+  }
+
+  .interactive-cake {
+    width: 200px;
+    margin: 12px auto;
+  }
+
+  .cake-prompt {
+    font-size: 1.18rem;
+  }
+
+  .cake-wish-status {
+    font-size: 0.88rem;
+  }
+
+  .hero-actions .btn-primary {
+    width: 100%;
+    max-width: 300px;
+    justify-content: center;
+    padding: 13px 20px;
+    font-size: 0.95rem;
+    margin: 0 auto;
+  }
+
+  /* SECCIÓN 1: SOBRE Y CARTA 3D EN MÓVIL */
+  .envelope-scene {
+    min-height: 290px;
+    max-width: 360px;
+    margin: 15px auto 10px;
+    width: 100%;
+  }
+
+  .envelope-container {
+    width: 100%;
+    max-width: 340px;
+    height: 220px;
+    margin: 0 auto;
+  }
+
+  .envelope-flap {
+    border-left: 170px solid transparent;
+    border-right: 170px solid transparent;
+    border-top: 110px solid #3d173e;
+  }
+
+  .envelope-pocket {
+    border-left: 170px solid #230d25;
+    border-right: 170px solid #230d25;
+    border-bottom: 110px solid #2d1130;
+    border-top: 110px solid transparent;
+  }
+
+  .wax-seal {
+    top: 95px;
+    width: 58px;
+    height: 58px;
+  }
+
+  .seal-inner {
+    width: 42px;
+    height: 42px;
+  }
+
+  .seal-heart {
+    font-size: 1.2rem;
+  }
+
+  .envelope-scene.is-open {
+    min-height: auto;
+  }
+
+  .envelope-container.open .letter-paper {
+    width: 100%;
+    max-width: 100%;
+    padding: 22px 14px 18px;
+    border-radius: 14px;
+    outline-offset: -5px;
+    min-height: auto;
+  }
+
+  .letter-greeting {
+    font-size: 0.95rem;
+    margin-bottom: 10px;
+    padding-bottom: 8px;
+  }
+
+  .letter-salutation {
+    font-size: 0.95rem;
+    margin-bottom: 8px;
+  }
+
+  .letter-body-paragraphs p {
+    font-size: 0.9rem;
+    line-height: 1.62;
+    margin-bottom: 10px;
+  }
+
+  .sig-prefix {
+    font-size: 0.82rem;
+  }
+
+  .sig-author {
+    font-size: 1.05rem;
+  }
+
+  .btn-fold-letter {
+    padding: 7px 16px;
+    font-size: 0.8rem;
+    width: 100%;
+    max-width: 240px;
+  }
+
+  /* SECCIÓN 2: LÍNEA DE TIEMPO / RECUERDOS */
+  .timeline-container {
+    padding: 10px 0;
+  }
+
+  .timeline-line {
+    left: 16px;
+  }
+
+  .timeline-card {
+    width: 100%;
+    padding-left: 44px;
+    padding-right: 4px;
+    padding-bottom: 30px;
+    left: 0 !important;
+    text-align: left !important;
+  }
+
+  .timeline-node {
+    left: 0 !important;
+    right: auto !important;
+    width: 32px;
+    height: 32px;
+    top: 14px;
+  }
+
+  .node-star {
+    font-size: 0.85rem;
+  }
+
+  .card-glass {
+    padding: 14px;
+    border-radius: 16px;
+  }
+
+  .card-image-wrapper,
+  .photo-upload-slot {
+    height: 180px;
+    border-radius: 12px;
+  }
+
+  .card-title {
+    font-size: 1.15rem;
+    margin-bottom: 6px;
+  }
+
+  .card-text {
+    font-size: 0.88rem;
+    line-height: 1.5;
+  }
+
+  /* SECCIÓN 3: FRASCO Y RAZONES */
+  .reasons-interactive-container {
+    flex-direction: column;
+    align-items: center;
+    gap: 22px;
+  }
+
+  .love-jar {
+    width: 120px;
+    height: 165px;
+  }
+
+  .jar-body {
+    height: 148px;
+  }
+
+  .jar-lid {
+    width: 70px;
+    height: 20px;
+  }
+
+  .reason-card-display {
+    width: 100%;
+    max-width: 100%;
+  }
+
+  .reason-card-3d {
+    padding: 20px 16px;
+    min-height: 180px;
+    border-radius: 18px;
+  }
+
+  .reason-quote-icon {
+    font-size: 2.2rem;
+    margin-top: 4px;
+  }
+
+  .reason-quote-text {
+    font-size: 1.02rem;
+    line-height: 1.55;
+    margin: 8px 0 16px;
+  }
+
+  .reason-badge {
+    font-size: 0.72rem;
+    padding: 3px 10px;
+  }
+
+  /* SECCIÓN 4: CUPONES DE REGALO */
+  .coupons-grid {
+    grid-template-columns: 1fr;
+    gap: 14px;
+  }
+
+  .coupon-ticket {
+    flex-direction: column;
+    align-items: stretch;
+    padding: 14px;
+    gap: 10px;
+    border-radius: 16px;
+  }
+
+  .ticket-left {
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    border-right: none;
+    border-bottom: 1px dashed rgba(255, 255, 255, 0.2);
+    padding-right: 0;
+    padding-bottom: 8px;
+    width: 100%;
+  }
+
+  .coupon-emoji {
+    font-size: 1.6rem;
+  }
+
+  .ticket-center {
+    text-align: left;
+  }
+
+  .ticket-title {
+    font-size: 1.05rem;
+    margin-bottom: 3px;
+  }
+
+  .ticket-desc {
+    font-size: 0.82rem;
+    line-height: 1.35;
+    margin-bottom: 4px;
+  }
+
+  .ticket-terms {
+    font-size: 0.68rem;
+  }
+
+  .ticket-right {
+    width: 100%;
+  }
+
+  .redeem-btn {
+    width: 100%;
+    padding: 9px 14px;
+    font-size: 0.88rem;
+    border-radius: 18px;
+    text-align: center;
+  }
+
+  .redeemed-stamp {
+    font-size: 1rem;
+    padding: 6px 16px;
+  }
+
+  /* SECCIÓN 5: MINIJUEGO DE GLOBOS */
+  .game-arena-card {
+    padding: 16px 12px;
+    border-radius: 18px;
+  }
+
+  .game-hud {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 8px;
+  }
+
+  .hud-item {
+    justify-content: space-between;
+    width: 100%;
+  }
+
+  .hud-stars {
+    font-size: 1rem;
+    letter-spacing: 2px;
+  }
+
+  .hud-progress-bar {
+    width: 100%;
+    min-width: 0;
+    height: 9px;
+  }
+
+  .game-field {
+    height: 240px;
+    border-radius: 12px;
+  }
+
+  .field-hint {
+    font-size: 0.85rem;
+    padding: 0 10px;
+  }
+
+  #start-game-btn {
+    width: 100%;
+    max-width: 250px;
+    margin: 0 auto;
+    justify-content: center;
+    padding: 10px 18px;
+    font-size: 0.88rem;
+  }
+
+  /* FOOTER Y MODALES */
+  .romantic-footer {
+    padding: 35px 12px 20px;
+    margin-top: 50px;
+  }
+
+  .footer-text {
+    font-size: 1.15rem;
+  }
+
+  .footer-subtext {
+    font-size: 0.85rem;
+    margin-bottom: 18px;
+  }
+
+  .footer-btn {
+    width: 100%;
+    max-width: 290px;
+    padding: 10px 16px;
+    font-size: 0.85rem;
+  }
+
+  .modal-backdrop {
+    padding: 10px;
+  }
+
+  .modal-card {
+    padding: 22px 14px;
+    border-radius: 18px;
+    max-height: 86vh;
+  }
+
+  .modal-crown {
+    font-size: 2.2rem;
+  }
+
+  .modal-title {
+    font-size: 1.35rem;
+  }
+
+  .modal-image-decor {
+    height: 150px;
+    border-radius: 12px;
+  }
+
+  .modal-message {
+    font-size: 0.88rem;
+    line-height: 1.5;
+    margin-bottom: 18px;
+  }
+
+  .form-group input,
+  .form-group textarea {
+    padding: 9px 12px;
+    font-size: 0.88rem;
+    border-radius: 10px;
+  }
+}
+
+/* PANTALLAS ULTRA PEQUEÑAS (<= 360px) */
+@media (max-width: 360px) {
+  .floating-nav {
+    width: calc(100% - 12px);
+    padding: 4px 8px;
+    height: 48px;
+  }
+
+  .music-player-pill {
+    max-width: 195px;
+    padding: 3px 6px;
+    gap: 5px;
+  }
+
+  .track-info {
+    max-width: 105px;
+  }
+
+  .track-title {
+    font-size: 0.68rem;
+    max-width: 100px;
+  }
+
+  .track-artist {
+    font-size: 0.58rem;
+    max-width: 100px;
+  }
+
+  .vinyl-disc {
+    width: 24px;
+    height: 24px;
+  }
+
+  .disc-icon {
+    font-size: 0.8rem;
+  }
+
+  .envelope-container {
+    max-width: 300px;
+    height: 200px;
+  }
+
+  .envelope-flap {
+    border-left: 150px solid transparent;
+    border-right: 150px solid transparent;
+    border-top: 100px solid #3d173e;
+  }
+
+  .envelope-pocket {
+    border-left: 150px solid #230d25;
+    border-right: 150px solid #230d25;
+    border-bottom: 100px solid #2d1130;
+    border-top: 100px solid transparent;
+  }
+
+  .wax-seal {
+    top: 85px;
+    width: 52px;
+    height: 52px;
+  }
+}
+
+/* MARCOS DE LLUVIA DE FOTOS ADAPTADOS */
+@media (max-width: 768px) {
+  .rain-frame.shape-heart {
+    width: 180px;
+    height: 180px;
+  }
+
+  .rain-frame.shape-heart .frame-photo-wrap {
+    width: 180px;
+    height: 180px;
+    clip-path: path('M90 156 C90 156 8 102 8 49 C8 25 30 8 57 17 C72 22 90 41 90 41 C90 41 108 22 123 17 C150 8 172 25 172 49 C172 102 90 156 90 156Z');
+  }
+
+  .rain-frame.shape-star {
+    width: 185px;
+    height: 185px;
+  }
+
+  .rain-frame.shape-star .frame-photo-wrap {
+    width: 185px;
+    height: 185px;
+  }
+
+  .rain-frame.shape-cake {
+    width: 170px;
+    height: 170px;
+  }
+
+  .rain-frame.shape-cake .frame-photo-wrap {
+    width: 170px;
+    height: 170px;
+    border-width: 4px;
+  }
+
+  .rain-frame.shape-flower {
+    width: 180px;
+    height: 180px;
+  }
+
+  .rain-frame.shape-flower .frame-photo-wrap {
+    width: 180px;
+    height: 180px;
+  }
+
+  .rain-frame.shape-moon {
+    width: 160px;
+    height: 180px;
+  }
+
+  .rain-frame.shape-moon .frame-photo-wrap {
+    width: 160px;
+    height: 180px;
+  }
+
+  .rain-frame .frame-add-hint .add-icon {
+    font-size: 30px;
+  }
+
+  .rain-frame .frame-add-hint .add-label {
+    font-size: 11px;
+    padding: 3px 8px;
+  }
+
+  .rain-frame .frame-deco {
+    font-size: 24px;
+  }
+}
+
+/* DISPOSITIVOS TÁCTILES */
+@media (hover: none) and (pointer: coarse) {
+  #cursor-glow {
+    display: none !important;
+  }
+
+  .rain-frame:hover {
+    transform: none !important;
+    filter: drop-shadow(0 4px 18px rgba(255, 100, 180, 0.55)) !important;
+  }
+
+  .card-glass:hover {
+    transform: none;
   }
 }
