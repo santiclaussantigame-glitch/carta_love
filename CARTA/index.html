@@ -1,0 +1,589 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>¡Feliz Cumpleaños, Mi Amor! 🎂✨ | Para Ti</title>
+  <meta name="description" content="Una dedicatoria y sorpresa interactiva de cumpleaños llena de amor, recuerdos, regalos y momentos mágicos.">
+  
+  <!-- Google Fonts: Playfair Display, Outfit, Dancing Script -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@600;700&family=Outfit:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,600;0,700;1,400;1,600&display=swap" rel="stylesheet">
+  
+  <link rel="stylesheet" href="style.css?v=20260911_v99">
+</head>
+<body>
+
+  <!-- Canvas de fondo para cielo estrellado interactivo y constelaciones -->
+  <canvas id="universe-canvas"></canvas>
+  
+  <!-- Canvas de fuegos artificiales para momentos especiales -->
+  <canvas id="fireworks-canvas"></canvas>
+
+  <!-- Efecto de cursor mágico -->
+  <div id="cursor-glow"></div>
+
+  <!-- Barra flotante de controles mágicos -->
+  <header class="floating-nav">
+    <div class="nav-brand">
+      <span class="heart-icon">🎂</span>
+      <img class="nav-logo" src="assets/logo/logo.png" alt="Ojitos" style="height:34px; width:auto; border-radius:18px; vertical-align:middle; margin-left:6px; border:1.5px solid rgba(255, 117, 151, 0.6); box-shadow: 0 0 10px rgba(255, 64, 129, 0.4); object-fit: cover;">
+      <span class="nav-title">Especial de Cumpleaños</span>
+    </div>
+    <div class="nav-actions">
+      <!-- Reproductor Flotante de la Canción -->
+      <div class="music-player-pill" id="music-player-container">
+        <div class="vinyl-disc" id="vinyl-disc">
+          <span class="disc-icon">💿</span>
+        </div>
+        <div class="track-info">
+          <span class="track-title">¿Hasta Dónde Te Quiero?</span>
+          <span class="track-artist">La Rondalla de Saltillo</span>
+        </div>
+        <button id="music-toggle-btn" class="nav-btn music-btn playing-state" title="Reproducir / Pausar Música">
+          <span class="music-icon" id="play-pause-icon">▶</span>
+          <span class="sound-wave" id="sound-wave">
+            <i></i><i></i><i></i><i></i>
+          </span>
+        </button>
+      </div>
+
+      <!-- Botón de Personalización en Vivo -->
+      <button id="config-open-btn" class="nav-btn config-btn" title="Personalizar Nombres y Fecha de Cumpleaños">
+        <span>⚙️</span>
+        <span class="config-label">Personalizar</span>
+      </button>
+    </div>
+  </header>
+
+  <!-- Banner de bienvenida para iniciar música (Garantiza reproducción con audio en todos los navegadores) -->
+  <div class="music-start-banner" id="music-start-banner">
+    <div class="banner-content">
+      <span class="banner-icon">🎵</span>
+      <div class="banner-text">
+        <strong>Toca aquí para escuchar la canción</strong>
+        <span>"¿Hasta Dónde Te Quiero?" - La Rondalla de Saltillo 💖</span>
+      </div>
+      <button class="banner-btn" id="start-music-banner-btn" data-url="https://www.youtube.com/watch?v=rYwXfmgNSVI">▶ Escuchar Ahora</button>
+    </div>
+  </div>
+
+  <!-- Contenedor seguro para el reproductor de YouTube en segundo plano -->
+  <div id="youtube-audio-container" style="position: absolute; left: -9999px; top: -9999px; width: 1px; height: 1px; overflow: hidden; opacity: 0; pointer-events: none;">
+    <div id="yt-player"></div>
+  </div>
+  <audio id="local-audio" loop preload="auto" src="assets/audio/cancion.mp3"></audio>
+
+  <main class="main-container">
+
+    <!-- SECCIÓN HERO: Bienvenida de Cumpleaños -->
+    <section class="hero-section" id="hero">
+      <div class="hero-badge animate-fade-in">
+        <span class="sparkle">🎉</span> ¡Hoy es un día muy especial en todo el universo! <span class="sparkle">🎂</span>
+      </div>
+      
+      <h1 class="hero-title animate-pop-up">
+        ¡Feliz Cumpleaños, <span id="partner-name-display" class="highlight-name">Arelita, mi amor, mi cielo, mi bby!!</span> 🎂✨
+      </h1>
+      
+      <div class="hero-quote-card animate-fade-in-delay">
+        <span class="quote-mark left">❝</span>
+        <p class="hero-quote">
+          Hace 23 añitos que abriste los ojitos, yo nunca me pudiese haber imaginado que una persona tan maravillosa como tú pudiese fijarse en mí, alguien inmaduro, terco, medio frío, no tan guapo; sin embargo, a pesar de eso y muchas cosas más destaco que puedo mejorar constantemente, soy paciente, cursi por ti, cariñoso por ti, daría tanto por ti que incluso no me temblaría la mano si llegase el caso de que estés fatal y por urgencia tenga que ir por ti y estar a tu lado; por eso concluyo en que desde que llegaste a mi vida todo mejoró para bien y desde hoy, hasta el resto de mi vida que estés a mi lado en el mismo camino amaré esta fecha porque se repetirá el día en el que el ser más hermoso e importante de mi vida habrá nacido; festejarte y demostrarte será parte de ello, de corroborarte que cuando llegaste a este mundo un poco antes que yo, sí, porque no me supiste esperar, incluso a pesar de eso hacerte saber que este día es muy especial solo por ti, por haber nacido y luego de más de dos décadas habernos encontrado para confirmar que nos complementamos tan bien el uno con el otro y que no todos pueden hacerlo real en esta situación de distancia. Contigo sé que podremos amarnos a través de una pantalla por largos periodos hasta que nos visitemos y logremos estar juntitos como Dios mande, mi cielo.
+        </p>
+        <span class="quote-mark right">❞</span>
+      </div>
+
+      <!-- PASTEL DE CUMPLEAÑOS INTERACTIVO (Pide un deseo) -->
+      <div class="cake-experience-wrapper animate-slide-up">
+        <div class="cake-card">
+          <div class="cake-header">
+            <span class="cake-tag">✨ Momento Mágico de Cumpleaños ✨</span>
+            <h2 class="cake-prompt">Pide un deseo y sopla las velitas 🎂</h2>
+          </div>
+
+          <div class="interactive-cake" id="interactive-cake" title="¡Toca las velitas para soplarlas y pedir tu deseo!">
+            <div class="cake-candles-row">
+              <div class="candle c1">
+                <div class="candle-flame"></div>
+                <div class="candle-smoke"></div>
+                <div class="candle-stick"></div>
+              </div>
+              <div class="candle c2">
+                <div class="candle-flame"></div>
+                <div class="candle-smoke"></div>
+                <div class="candle-stick"></div>
+              </div>
+              <div class="candle c3">
+                <div class="candle-flame"></div>
+                <div class="candle-smoke"></div>
+                <div class="candle-stick"></div>
+              </div>
+            </div>
+            
+            <div class="cake-layer cake-top">
+              <div class="frosting-drips">
+                <span></span><span></span><span></span><span></span><span></span>
+              </div>
+              <div class="cake-cherries">🍒 🍓 🍒</div>
+            </div>
+            <div class="cake-layer cake-bottom">
+              <div class="frosting-decor">💖 ✨ 💖</div>
+            </div>
+            <div class="cake-plate"></div>
+          </div>
+
+          <div class="cake-wish-status" id="cake-wish-status">
+            <span class="wish-indicator">🕯️ Toca el pastel para soplar las velas y pedir tu deseo 🕯️</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Botón de Acción Principal -->
+      <div class="hero-actions">
+        <button id="open-letter-hero-btn" class="btn-primary glow-effect">
+          <span class="btn-icon">💌</span>
+          <span>Abrir Tu Carta de Cumpleaños</span>
+          <span class="btn-sparkles">✨</span>
+        </button>
+      </div>
+    </section>
+
+
+    <!-- SECCIÓN 1: Carta de Cumpleaños Interactiva con Sello de Cera 3D -->
+    <section class="section letter-section" id="carta-section">
+      <div class="section-header">
+        <span class="section-tag">Dedicatoria Especial</span>
+        <h2 class="section-title">Una Carta Para Tu Cumpleaños</h2>
+        <p class="section-desc">Haz clic en el sello de cera para romper el lacre y leer mis mejores deseos para ti.</p>
+      </div>
+
+      <div class="envelope-scene" id="envelope-scene">
+        <div class="envelope-container" id="envelope-box">
+          
+          <!-- Solapa superior del sobre -->
+          <div class="envelope-flap" id="envelope-flap"></div>
+          
+          <!-- Sello de Cera 3D -->
+          <div class="wax-seal" id="wax-seal" title="Toca para romper el sello">
+            <div class="seal-inner">
+              <span class="seal-heart">🎂</span>
+            </div>
+            <div class="seal-pulse"></div>
+          </div>
+
+          <!-- Bolsillo frontal del sobre -->
+          <div class="envelope-pocket"></div>
+
+          <!-- Papel de la Carta -->
+          <div class="letter-paper" id="letter-paper">
+            <div class="letter-decor top-left">❦</div>
+            <div class="letter-decor top-right">❦</div>
+            
+            <div class="letter-inner-content">
+              <div class="letter-greeting" id="letter-greeting-text">
+                Para mi noviecita,feliz cumple my love,mi arelita, mi princesa, mi cielo, mi bby!!:
+              </div>
+              
+              <div class="letter-body-paragraphs" id="letter-body-paragraphs">
+                <p class="letter-salutation">Mi niña hermosa,</p>
+                <p>Hoy quiero recordarte lo inmensamente agradecido que estoy con la vida por ponerte en mi camino. Tienes el poder de iluminar mi dia con una sonrisa tuya,tu voz es mi calma favorita y si tus besos fueran un lugar serian el único lugar del mundo donde sentiria que todo está en paz,eres lo que mi corazon,cuerpo,mente y alma quiere por el resto de mi vida.</p>
+                <p>Gracias por ser mi compañera durante todo el trayecto que ambos estamos haciendo posible, eres mi confidente, mi mejor amiga y el amor más bonito y puro que jamás pude soñar.</p>
+                <p>Aqui mediante este escrito expreso mi emocion por tu cumple; a ti, a tu luz, a tu ternura y a todo lo hermoso que estamos construyendo juntos cada día.</p>
+                <p>Te amo más de lo que las palabras pueden explicar, hoy, mañana y por el resto de mi vida,te amare y te seguire amando hasta que Dios y tu me lo permitan. ❤️</p>
+              </div>
+              
+              <div class="letter-signature-block">
+                <p class="sig-prefix" id="sig-prefix-text">Con todo mi amor y mis mejores deseos para este hermoso dia que es tu cumpleaños.</p>
+                <p class="sig-author"><span id="letter-from-name" class="sig-name">Tu Amor;Tu Sami,Tu Niño Tiquito</span> <span class="sig-heart">🎂💖</span></p>
+              </div>
+
+              <div class="letter-actions-bottom">
+                <button type="button" class="btn-fold-letter" id="btn-fold-letter" title="Volver a guardar en el sobre">
+                  ✉️ Guardar carta en el sobre
+                </button>
+              </div>
+            </div>
+
+            <div class="letter-decor bottom-left">❦</div>
+            <div class="letter-decor bottom-right">❦</div>
+          </div>
+
+        </div>
+      </div>
+
+      <div class="envelope-hint" id="envelope-status-hint">
+        <span class="hint-sparkle">✨</span> Toca el sello de cera para abrir tu carta de cumpleaños <span class="hint-sparkle">✨</span>
+      </div>
+    </section>
+
+
+    <!-- SECCIÓN 2: Galería de Recuerdos de Cumpleaños (Marcos Señalizados) -->
+    <section class="section timeline-section" id="historia">
+      <div class="section-header">
+        <span class="section-tag">Galería de Momentos</span>
+        <h2 class="section-title">Celebrando Cada Instante a Tu Lado</h2>
+        <p class="section-desc">Un recorrido por las mejores sonrisas y momentos que hacen tan especial tu vida.</p>
+      </div>
+
+      <div class="timeline-container">
+        <div class="timeline-line"></div>
+
+        <!-- Hito 1 -->
+        <div class="timeline-card left-card animate-on-scroll">
+          <div class="timeline-node">
+            <span class="node-star">🌟</span>
+          </div>
+          <div class="card-glass">
+            <div class="card-image-wrapper photo-upload-slot" id="slot-memory-1" data-slot-id="memory-1" title="Haz clic para subir tu foto">
+              <input type="file" class="hidden-file-input" id="file-memory-1" accept="image/*">
+              <div class="photo-placeholder-view">
+                <span class="placeholder-icon">📸</span>
+                <span class="placeholder-title">Tu Sonrisa Más Bonita</span>
+                <span class="placeholder-subtitle">✨ Toca aquí para subirla ✨</span>
+              </div>
+              <img src="" alt="Tu sonrisa" class="card-img photo-preview hidden" id="preview-memory-1">
+              <div class="change-photo-badge">✏️ Cambiar</div>
+            </div>
+            <div class="card-info">
+              <span class="card-date-badge">Momento I</span>
+              <h3 class="card-title">La Luz de Tu Sonrisa</h3>
+              <p class="card-text">
+                Tu alegría tiene la magia de contagiar a todos. Gracias por regalarme la dicha de verte sonreír cada día.
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Hito 2 -->
+        <div class="timeline-card right-card animate-on-scroll">
+          <div class="timeline-node">
+            <span class="node-star">🎉</span>
+          </div>
+          <div class="card-glass">
+            <div class="card-image-wrapper photo-upload-slot" id="slot-memory-2" data-slot-id="memory-2" title="Haz clic para subir tu foto">
+              <input type="file" class="hidden-file-input" id="file-memory-2" accept="image/*">
+              <div class="photo-placeholder-view">
+                <span class="placeholder-icon">📸</span>
+                <span class="placeholder-title">Nuestra Mejor Aventura Juntos</span>
+                <span class="placeholder-subtitle">✨ Toca aquí para subirla ✨</span>
+              </div>
+              <img src="" alt="Aventuras juntos" class="card-img photo-preview hidden" id="preview-memory-2">
+              <div class="change-photo-badge">✏️ Cambiar</div>
+            </div>
+            <div class="card-info">
+              <span class="card-date-badge">Momento II</span>
+              <h3 class="card-title">Un Año Lleno de Aventuras</h3>
+              <p class="card-text">
+                Cada salida, cada viaje y cada conversación contigo es un tesoro que guardo con todo el cariño en mi corazón.
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Hito 3 -->
+        <div class="timeline-card left-card animate-on-scroll">
+          <div class="timeline-node">
+            <span class="node-star">🎂</span>
+          </div>
+          <div class="card-glass">
+            <div class="card-image-wrapper photo-upload-slot" id="slot-memory-3" data-slot-id="memory-3" title="Haz clic para subir tu foto">
+              <input type="file" class="hidden-file-input" id="file-memory-3" accept="image/*">
+              <div class="photo-placeholder-view">
+                <span class="placeholder-icon">📸</span>
+                <span class="placeholder-title">Foto de Cumpleaños / Favorita</span>
+                <span class="placeholder-subtitle">✨ Toca aquí para subirla ✨</span>
+              </div>
+              <img src="" alt="Celebración" class="card-img photo-preview hidden" id="preview-memory-3">
+              <div class="change-photo-badge">✏️ Cambiar</div>
+            </div>
+            <div class="card-info">
+              <span class="card-date-badge">Momento III</span>
+              <h3 class="card-title">Deseos Para Tu Nuevo Año</h3>
+              <p class="card-text">
+                Que esta nueva vuelta al sol te traiga salud, éxito en cada uno de tus proyectos y mucha felicidad. ¡Estaré a tu lado para celebrarlo!
+              </p>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+
+    <!-- SECCIÓN 3: Razones por las que Eres Extraordinaria -->
+    <section class="section reasons-section" id="razones">
+      <div class="section-header">
+        <span class="section-tag">Celebrando Quién Eres</span>
+        <h2 class="section-title">Razones Para Festejar Tu Vida</h2>
+        <p class="section-desc">Hay infinitas cualidades que te hacen única y maravillosa. Toca el frasco de deseos para descubrir una.</p>
+      </div>
+
+      <div class="reasons-interactive-container">
+        
+        <!-- Tarro de Amor Animado -->
+        <div class="love-jar-wrapper">
+          <div class="love-jar" id="jar-trigger">
+            <div class="jar-lid"></div>
+            <div class="jar-body">
+              <div class="jar-glow-core"></div>
+              <div class="jar-hearts-inside">
+                <span class="floating-mini-heart h1">🎂</span>
+                <span class="floating-mini-heart h2">✨</span>
+                <span class="floating-mini-heart h3">💖</span>
+                <span class="floating-mini-heart h4">🎉</span>
+                <span class="floating-mini-heart h5">🎈</span>
+              </div>
+              <div class="jar-label">
+                <span>Deseos de Cumple</span>
+              </div>
+            </div>
+          </div>
+          <button id="draw-reason-btn" class="btn-magic">
+            <span>✨ Sacar Otro Mensaje ✨</span>
+          </button>
+          <div class="reason-counter-status">
+            Descubiertos: <strong id="reasons-unlocked-count">1</strong> / 100
+          </div>
+        </div>
+
+        <!-- Tarjeta 3D que se revela -->
+        <div class="reason-card-display">
+          <div class="reason-card-3d" id="current-reason-card">
+            <div class="card-sparkle-border"></div>
+            <div class="reason-badge">
+              <span id="reason-number">Deseo #1</span>
+            </div>
+            <div class="reason-quote-icon">❝</div>
+            <p id="reason-text" class="reason-quote-text">
+              Que nunca te falte esa sonrisa tan dulce que tiene el poder de iluminar cualquier lugar.
+            </p>
+            <div class="reason-footer">
+              <span>Para la cumpleañera más linda</span>
+              <span class="pulse-heart">🎂</span>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+
+    <!-- SECCIÓN 4: Cupones de Regalo de Cumpleaños -->
+    <section class="section coupons-section" id="cupones">
+      <div class="section-header">
+        <span class="section-tag">Regalos Exclusivos</span>
+        <h2 class="section-title">Tus Cupones de Regalo de Cumpleaños</h2>
+        <p class="section-desc">¡Totalmente válidos para ti en tu mes de cumpleaños! Toca cualquier cupón para canjearlo cuando gustes.</p>
+      </div>
+
+      <div class="coupons-grid">
+
+        <!-- Cupón 1 -->
+        <div class="coupon-ticket" data-coupon-id="1">
+          <div class="ticket-left">
+            <div class="ticket-badge">CUMPLE VIP</div>
+            <span class="coupon-emoji">🎂🍰</span>
+          </div>
+          <div class="ticket-center">
+            <h3 class="ticket-title">Tu Pastel & Postre Favorito</h3>
+            <p class="ticket-desc">El postre que más se te antoje, decorado con velitas y comprado o preparado para ti.</p>
+            <span class="ticket-terms">Válido para endulzarte el día</span>
+          </div>
+          <div class="ticket-right">
+            <button class="redeem-btn" onclick="redeemCoupon(this, 1)">Canjear</button>
+          </div>
+          <div class="redeemed-stamp">¡CANJEADO! 🎂</div>
+        </div>
+
+        <!-- Cupón 2 -->
+        <div class="coupon-ticket" data-coupon-id="2">
+          <div class="ticket-left">
+            <div class="ticket-badge">CUMPLE VIP</div>
+            <span class="coupon-emoji">👑✨</span>
+          </div>
+          <div class="ticket-center">
+            <h3 class="ticket-title">Día de Consentirte como una Reina</h3>
+            <p class="ticket-desc">Un día completo donde tus deseos son órdenes: cero quehaceres, solo mimos y descanso.</p>
+            <span class="ticket-terms">Válido para relajarte al 100%</span>
+          </div>
+          <div class="ticket-right">
+            <button class="redeem-btn" onclick="redeemCoupon(this, 2)">Canjear</button>
+          </div>
+          <div class="redeemed-stamp">¡CANJEADO! 👑</div>
+        </div>
+
+        <!-- Cupón 3 -->
+        <div class="coupon-ticket" data-coupon-id="3">
+          <div class="ticket-left">
+            <div class="ticket-badge">CUMPLE VIP</div>
+            <span class="coupon-emoji">🎁🛍️</span>
+          </div>
+          <div class="ticket-center">
+            <h3 class="ticket-title">Vale por un Regalo Sorpresa</h3>
+            <p class="ticket-desc">Un detalle especial que tú elijas o una salida de compras para consentirte.</p>
+            <span class="ticket-terms">Válido en tu tienda favorita</span>
+          </div>
+          <div class="ticket-right">
+            <button class="redeem-btn" onclick="redeemCoupon(this, 3)">Canjear</button>
+          </div>
+          <div class="redeemed-stamp">¡CANJEADO! 🎁</div>
+        </div>
+
+        <!-- Cupón 4 -->
+        <div class="coupon-ticket" data-coupon-id="4">
+          <div class="ticket-left">
+            <div class="ticket-badge">CUMPLE VIP</div>
+            <span class="coupon-emoji">🍽️🥂</span>
+          </div>
+          <div class="ticket-center">
+            <h3 class="ticket-title">Cena Especial de Celebración</h3>
+            <p class="ticket-desc">En tu restaurante preferido o una cena romántica a la luz de las velas para brindar por ti.</p>
+            <span class="ticket-terms">Válido para celebrar a lo grande</span>
+          </div>
+          <div class="ticket-right">
+            <button class="redeem-btn" onclick="redeemCoupon(this, 4)">Canjear</button>
+          </div>
+          <div class="redeemed-stamp">¡CANJEADO! 🥂</div>
+        </div>
+
+      </div>
+    </section>
+
+
+    <!-- SECCIÓN 5: Minijuego de Cumpleaños: Globos & Estrellas -->
+    <section class="section minigame-section" id="juego">
+      <div class="section-header">
+        <span class="section-tag">Minijuego de Cumpleaños</span>
+        <h2 class="section-title">Revienta los Globos de Cumpleaños 🎈</h2>
+        <p class="section-desc">Atrapa 5 globos mágicos de cumpleaños para desatar la gran fiesta de fuegos artificiales.</p>
+      </div>
+
+      <div class="game-arena-card">
+        <div class="game-hud">
+          <div class="hud-item">
+            <span class="hud-label">Globos Atrapados:</span>
+            <span class="hud-stars" id="star-score-display">🎈🎈🎈🎈🎈</span>
+          </div>
+          <div class="hud-progress-bar">
+            <div id="game-progress" class="progress-fill" style="width: 0%;"></div>
+          </div>
+        </div>
+
+        <!-- Área interactiva del juego donde vuelan globos -->
+        <div class="game-field" id="game-field">
+          <div class="field-hint" id="game-field-hint">
+            <span>🎈 Toca el botón abajo para iniciar los globos de fiesta 🎈</span>
+          </div>
+        </div>
+
+        <button id="start-game-btn" class="btn-magic">
+          <span>🎮 Iniciar Juego de Globos</span>
+        </button>
+      </div>
+    </section>
+
+    <!-- Footer Romántico -->
+    <footer class="romantic-footer">
+      <div class="footer-heart-anim">
+        <span>🎂✨</span>
+      </div>
+      <p class="footer-text">
+        ¡Feliz Cumpleaños con todo mi corazón para <span id="footer-partner-name">Arelita, mi amor, mi cielo, mi bby!!</span>!
+      </p>
+      <p class="footer-subtext">
+        Que este nuevo año de vida esté lleno de bendiciones y momentos inolvidables 🎉
+      </p>
+      <button id="celebrate-again-btn" class="footer-btn">
+        🎆 ¡Lanzar Fuegos Artificiales de Fiesta! 🎆
+      </button>
+    </footer>
+
+  </main>
+
+
+  <!-- MODAL: Gran Sorpresa Final de Cumpleaños -->
+  <div class="modal-backdrop" id="surprise-modal">
+    <div class="modal-card celebration-card">
+      <button class="modal-close" id="close-surprise-btn">&times;</button>
+      
+      <div class="modal-crown">👑🎂🎉</div>
+      <h2 class="modal-title">¡Feliz Cumpleaños, Mi Reina!</h2>
+      
+      <div class="modal-image-decor photo-upload-slot" id="slot-memory-modal" data-slot-id="memory-modal" title="Haz clic para subir su foto favorita">
+        <input type="file" class="hidden-file-input" id="file-memory-modal" accept="image/*">
+        <div class="photo-placeholder-view">
+          <span class="placeholder-icon">👑📸</span>
+          <span class="placeholder-title">Nuestra Mejor Foto Juntos</span>
+          <span class="placeholder-subtitle">✨ Toca aquí para subirla ✨</span>
+        </div>
+        <img src="" alt="Amor infinito" class="modal-img photo-preview hidden" id="preview-memory-modal">
+        <div class="change-photo-badge">✏️ Cambiar Foto</div>
+      </div>
+
+      <p class="modal-message">
+        Hoy el universo entero celebra tu existencia. Deseo que este nuevo año esté lleno de metas cumplidas, alegrías inmensas y que nunca se apague esa luz tan hermosa que llevas dentro.
+        <br><br>
+        <strong>¡Te amo con toda mi alma! ¡Que pases el cumpleaños más feliz del mundo! 🥳🎂❤️</strong>
+      </p>
+
+      <div class="modal-actions">
+        <button id="modal-celebrate-btn" class="btn-primary glow-effect">
+          🎆 ¡Celebrar con Fuegos Artificiales! 🎆
+        </button>
+      </div>
+    </div>
+  </div>
+
+
+  <!-- MODAL: Personalizador en Vivo -->
+  <div class="modal-backdrop" id="config-modal">
+    <div class="modal-card config-card">
+      <button class="modal-close" id="close-config-btn">&times;</button>
+      
+      <div class="config-header">
+        <span class="config-icon">⚙️</span>
+        <h3>Personalizar la Sorpresa de Cumpleaños</h3>
+      </div>
+      <p class="config-desc">
+        Ajusta estos datos para que la dedicatoria sea perfecta para tu novia. Se guardan automáticamente en tu dispositivo.
+      </p>
+
+      <form id="config-form" class="config-form">
+        <div class="form-group">
+          <label for="input-partner-name">Nombre de tu Novia / Apodo cariñoso:</label>
+          <input type="text" id="input-partner-name" placeholder="Ej: Arelita, mi amor, mi cielo, mi bby!!" required>
+        </div>
+
+        <div class="form-group">
+          <label for="input-your-name">Tu Nombre / Firma:</label>
+          <input type="text" id="input-your-name" placeholder="Ej: Tu Amor, Mateo..." required>
+        </div>
+
+        <div class="form-group">
+          <label for="input-start-date">Fecha de su Cumpleaños / Día especial:</label>
+          <input type="date" id="input-start-date">
+        </div>
+
+        <div class="form-group">
+          <label for="input-custom-letter">Mensaje de la Carta de Cumpleaños:</label>
+          <textarea id="input-custom-letter" rows="6" placeholder="Escribe aquí tu dedicatoria especial de cumpleaños..."></textarea>
+        </div>
+
+        <div class="form-actions">
+          <button type="submit" class="btn-primary">
+            💾 Guardar y Aplicar Cambios
+          </button>
+          <button type="button" id="reset-config-btn" class="btn-secondary">
+            🔄 Restaurar Dedicatoria por Defecto
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- Audio Context & Script -->
+  <script src="script.js?v=20260911_v99"></script>
+</body>
+</html>

@@ -1,0 +1,21 @@
+{
+  "name": "carta-romantica-espacial",
+  "version": "1.0.0",
+  "description": "Carta romántica interactiva con efectos espaciales y música",
+  "main": "index.html",
+  "scripts": {
+    "dev": "live-server --port=5500",
+    "start": "live-server --port=5500"
+  },
+  "keywords": [
+    "carta",
+    "romantica",
+    "espacial",
+    "interactiva"
+  ],
+  "author": "Tu Nombre",
+  "license": "ISC",
+  "devDependencies": {
+    "live-server": "^1.2.1"
+  }
+}

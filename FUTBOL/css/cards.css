@@ -1,0 +1,340 @@
+/* ==========================================================================
+   FC MOBILE CARD STYLES & HOLOGRAPHIC SHIMMER
+   ========================================================================== */
+
+.fc-card-wrapper {
+    perspective: 1000px;
+    display: flex;
+    justify-content: center;
+}
+
+.fc-card {
+    position: relative;
+    width: 100%;
+    max-width: 285px;
+    height: 420px;
+    background: var(--bg-surface);
+    border-radius: 18px;
+    border: 2px solid var(--theme-color, #00d2ff);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.6), 0 0 20px var(--theme-glow, rgba(0, 210, 255, 0.3));
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 1.1rem;
+    overflow: hidden;
+    cursor: pointer;
+    transition: transform 0.2s cubic-bezier(0.2, 0, 0, 1), box-shadow 0.3s ease;
+    transform-style: preserve-3d;
+}
+
+.fc-card:hover {
+    box-shadow: 0 18px 45px rgba(0, 0, 0, 0.8), 0 0 35px var(--theme-glow, rgba(0, 210, 255, 0.5));
+}
+
+/* Holographic Shimmer Effect */
+.card-shimmer {
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: linear-gradient(
+        45deg,
+        transparent 35%,
+        rgba(255, 255, 255, 0.12) 48%,
+        rgba(255, 255, 255, 0.25) 50%,
+        rgba(255, 255, 255, 0.12) 52%,
+        transparent 65%
+    );
+    transform: rotate(25deg) translateY(-100%);
+    transition: transform 0.75s ease;
+    pointer-events: none;
+    z-index: 15;
+}
+
+.fc-card:hover .card-shimmer {
+    transform: rotate(25deg) translateY(100%);
+}
+
+/* Specific Event Card Themes */
+/* TOTY */
+.fc-card.card-toty {
+    background: linear-gradient(170deg, #09192f 0%, #0d264a 35%, #05101f 85%);
+    border-color: #00d2ff;
+}
+.fc-card.card-toty::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0; height: 4px;
+    background: linear-gradient(90deg, #00d2ff, #ffffff, #00d2ff);
+}
+
+/* ICON PRIME */
+.fc-card.card-icon {
+    background: linear-gradient(170deg, #2b2314 0%, #4a3c20 35%, #17120a 85%);
+    border-color: #f6d365;
+}
+.fc-card.card-icon::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0; height: 4px;
+    background: linear-gradient(90deg, #ffd700, #fff7c2, #ffd700);
+}
+
+/* BALLON D'OR */
+.fc-card.card-ballon-dor {
+    background: linear-gradient(170deg, #1f1b07 0%, #3d340c 35%, #0f0d04 85%);
+    border-color: #ffd700;
+}
+
+/* TOTS */
+.fc-card.card-tots {
+    background: linear-gradient(170deg, #061e38 0%, #004d7a 35%, #031224 85%);
+    border-color: #00f2fe;
+}
+
+/* RETRO STARS */
+.fc-card.card-retro {
+    background: linear-gradient(170deg, #26092d 0%, #520b4a 35%, #120316 85%);
+    border-color: #ff007f;
+}
+
+/* UCL */
+.fc-card.card-ucl {
+    background: linear-gradient(170deg, #0b1536 0%, #172a6b 35%, #060b1c 85%);
+    border-color: #3a7bd5;
+}
+
+/* PIONEERS & FOUNDERS FC 27 */
+.fc-card.card-pioneers,
+.fc-card.card-founders {
+    background: linear-gradient(170deg, #022013 0%, #064426 40%, #01140b 85%);
+    border-color: #00ff87;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.7), 0 0 25px rgba(0, 255, 135, 0.4);
+}
+.fc-card.card-pioneers::before,
+.fc-card.card-founders::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0; height: 4px;
+    background: linear-gradient(90deg, #00ff87, #60efff, #00ff87);
+}
+
+/* HEROES */
+.fc-card.card-heroes {
+    background: linear-gradient(170deg, #2d1309 0%, #5c200c 35%, #170804 85%);
+    border-color: #ff7e5f;
+}
+
+/* ==========================================================================
+   CARD INTERNAL ELEMENTS
+   ========================================================================== */
+
+/* Top Header Meta */
+.card-header-meta {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    z-index: 5;
+}
+
+.card-rating-box {
+    display: flex;
+    flex-direction: column;
+    line-height: 1;
+}
+
+.card-ovr {
+    font-family: var(--font-heading);
+    font-size: 2.2rem;
+    font-weight: 900;
+    color: var(--theme-color, #ffffff);
+    text-shadow: 0 0 10px rgba(0, 0, 0, 0.8);
+    letter-spacing: -1px;
+}
+
+.card-pos {
+    font-family: var(--font-heading);
+    font-size: 1.1rem;
+    font-weight: 800;
+    color: #ffffff;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.6);
+    margin-top: 2px;
+}
+
+.card-badges-box {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 4px;
+}
+
+.card-flag, .card-club-logo {
+    font-size: 1.25rem;
+    filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.6));
+}
+
+/* Card Player Render / Photo */
+.card-player-render {
+    position: relative;
+    height: 155px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: -10px;
+    z-index: 2;
+}
+
+.player-photo {
+    width: 140px;
+    height: 140px;
+    object-fit: contain;
+    filter: drop-shadow(0 8px 16px rgba(0, 0, 0, 0.85));
+    transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.fc-card:hover .player-photo {
+    transform: scale(1.08) translateY(-4px);
+}
+
+/* Fallback avatar cuando falla la imagen del jugador */
+.avatar-fallback {
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    background: radial-gradient(135deg, color-mix(in srgb, var(--fb-color, #00d2ff) 20%, #0b1329) 0%, #0b1329 100%);
+    border: 3px solid var(--fb-color, #00d2ff);
+    box-shadow: 0 0 20px var(--fb-color, #00d2ff), inset 0 0 20px rgba(0,0,0,0.5);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    animation: fallbackPulse 2.5s ease-in-out infinite;
+}
+
+.avatar-fallback span {
+    font-family: 'Rajdhani', 'Outfit', sans-serif;
+    font-size: 2.4rem;
+    font-weight: 900;
+    color: var(--fb-color, #00d2ff);
+    text-shadow: 0 0 12px var(--fb-color, #00d2ff);
+    letter-spacing: 2px;
+}
+
+@keyframes fallbackPulse {
+    0%, 100% { box-shadow: 0 0 20px var(--fb-color, #00d2ff), inset 0 0 20px rgba(0,0,0,0.5); }
+    50% { box-shadow: 0 0 35px var(--fb-color, #00d2ff), inset 0 0 10px rgba(0,0,0,0.3); }
+}
+
+.player-glow-radial {
+    position: absolute;
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    background: radial-gradient(circle, var(--theme-glow, rgba(0, 210, 255, 0.35)) 0%, transparent 70%);
+    pointer-events: none;
+    z-index: -1;
+}
+
+/* Card Player Name & Event Tag */
+.card-info {
+    text-align: center;
+    z-index: 5;
+}
+
+.card-event-badge {
+    font-family: var(--font-heading);
+    font-size: 0.65rem;
+    font-weight: 800;
+    color: var(--theme-color, #00d2ff);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-bottom: 2px;
+}
+
+.card-player-name {
+    font-family: var(--font-heading);
+    font-size: 1.2rem;
+    font-weight: 800;
+    color: #ffffff;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.card-stars-row {
+    display: flex;
+    justify-content: center;
+    gap: 0.75rem;
+    font-size: 0.75rem;
+    color: var(--accent-gold);
+    margin-top: 2px;
+}
+
+/* 6 Attributes Matrix */
+.card-stats-matrix {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(2, 1fr);
+    gap: 4px;
+    background: rgba(0, 0, 0, 0.45);
+    backdrop-filter: blur(8px);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 8px;
+    padding: 6px 8px;
+    z-index: 5;
+}
+
+.stat-col {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 4px;
+    font-size: 0.8rem;
+}
+
+.s-val {
+    font-family: var(--font-heading);
+    font-weight: 800;
+    color: #ffffff;
+}
+
+.s-lbl {
+    font-weight: 600;
+    color: var(--text-muted);
+    font-size: 0.75rem;
+}
+
+/* Hover Action Buttons */
+.card-actions {
+    display: flex;
+    gap: 6px;
+    margin-top: 8px;
+    z-index: 10;
+}
+
+.btn-card-action {
+    flex: 1;
+    background: rgba(255, 255, 255, 0.1);
+    border: 1px solid var(--border-glass);
+    color: #ffffff;
+    font-family: var(--font-heading);
+    font-size: 0.8rem;
+    font-weight: 700;
+    padding: 0.45rem 0.5rem;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: var(--transition-smooth);
+}
+
+.btn-card-action:hover {
+    background: var(--primary-neon);
+    color: #04141c;
+    border-color: var(--primary-neon);
+    box-shadow: 0 0 10px var(--primary-neon-glow);
+}
+
+.btn-compare-quick {
+    flex: 0 0 42px;
+}
